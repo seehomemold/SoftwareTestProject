@@ -30,6 +30,10 @@ c.execute('''CREATE TABLE board
         Name text NOT NULL,
         Moderator text not null);''')
 
+#for i in range(1000000):
+#    username = "user"+ str(i)
+#    cursor = c.execute('Insert INTO user("Name","Email","Password")VALUES(?,?,?);',(username,username,username))
+
 print "Table create"
 conn.commit()
 conn.close()

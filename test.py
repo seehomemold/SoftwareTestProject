@@ -48,7 +48,7 @@ def ServeClient(sock,addr):
                     msg = "Register Error.\r\n"
                     sock.send(msg.encode('utf-8'))
             else:
-                msg = "Usage: register <username> <email> <passsword>\r\n"
+                msg = "Usage: register <username> <email> <password>\r\n"
                 sock.send(msg.encode('utf-8'))
     #   part of logiin
         elif(msgArr[0]=="login"):
@@ -60,7 +60,7 @@ def ServeClient(sock,addr):
                 cursor = cur.execute('SELECT * FROM USER WHERE Name = ?;',(msgArr[1],))
                 cursor = cursor.fetchone()
                 if(cursor != None and cursor[3] == msgArr[2]):
-                    msg = "Welcome " + msgArr[1]
+                    msg = "Welcome, " + msgArr[1]
                     print(msg)
                     msg = msg + ".\r\n"
                     sock.send(msg.encode('utf-8'))
@@ -75,7 +75,7 @@ def ServeClient(sock,addr):
     #   part of logout
         elif(len(msgArr) == 1 and msgArr[0]== "logout"):
             if(isLogin == 1):
-                msg = "Bye "+userName
+                msg = "Bye, "+userName
                 print(msg)
                 msg = msg + "\r\n"
                 sock.send(msg.encode('utf-8'))
